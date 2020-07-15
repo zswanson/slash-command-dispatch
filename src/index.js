@@ -159,6 +159,7 @@ async function run() {
       core.debug(
         `Slash command payload: ${inspect(clientPayload.slash_command)}`
       );
+      core.debug(`Client Payload: ${inspect(clientPayload)}`)
       // Dispatch the command
       const dispatchRepo = cmd.repository.split("/");
       const eventType = cmd.command + cmd.event_type_suffix;
