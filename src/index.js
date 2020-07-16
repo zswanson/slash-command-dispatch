@@ -149,6 +149,14 @@ async function run() {
       clientPayload["pull_request"] = pullRequest;
     }
 
+    // Temporary fix to reduce the size of the client payload
+    try {
+      delete clientPayload.github.payload.issue.body
+      delete clientPayload.pull_request.body
+    } catch {
+      /* empty */
+    }
+
     // Dispatch for each matching configuration
     for (const cmd of configMatches) {
       // Generate slash command payload
